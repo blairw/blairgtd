@@ -20,13 +20,18 @@
 				padding-right: 1vw;
 			}
 			#statusBar {
-				background-color: rgb(200,255,0);
 				padding: 0.5vw;
 				text-align: center;
 				margin-bottom: 1vw;
-				color: rgba(0,0,0,0.5);
 				font-weight: bold;
-				
+			}
+			.statusBarLoading {
+				background-color: rgb(200,255,0);
+				color: rgba(0,0,0,0.5);
+			}
+			.statusBarDone {
+				background-color: rgb(0,101,189);
+				color: rgba(255,255,255,0.5);
 			}
 		</style>
 		<title>PROJECT_NAME</title>
@@ -80,7 +85,7 @@
 			</div><!-- /.container-fluid -->
 		</nav>
 		<div id="bodyWrapper">
-			<div id="statusBar"><i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;loading ...</div>
+			<div id="statusBar" class="statusBarLoading"><i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;loading ...</div>
 			<div class="row">
 				<div class="col-md-3">
 					<div class="panel panel-danger">

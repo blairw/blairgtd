@@ -27,6 +27,8 @@ function bodyDidLoad() {
 			} else {
 			}
 		}
-		$("#statusBar").html("done");
+		$("#statusBar").html("done "+new Date());
+		$("#statusBar").removeClass("statusBarLoading");
+		$("#statusBar").addClass("statusBarDone");
 	});
 }
