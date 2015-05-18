@@ -7,10 +7,18 @@
 		<script src="frameworks/jquery-1.11.3.min.js"></script>
 		<script src="ui-Homepage.logic.js"></script>
 		<script src="frameworks/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+		<script>
+			var selectedId = parseInt(<?php echo $_GET['projectId']; ?>);
+		</script>
 		<style>
+			.priorityListing {
+				font-weight: bold;
+			}
 			body {
-				background-color: lightgray;
-				font-family: 'Segoe UI', sans-serif;
+				background-image: url('frameworks/subtlepatterns.com/symphony/symphony.png');
+				background-attachment: fixed;
+				font-family: 'TeX Gyre Heros', 'Segoe UI', sans-serif;
+				padding: 1px;
 			}
 			h3 {
 				font-weight: bold;
@@ -23,7 +31,7 @@
 				padding: 0.5vw;
 				text-align: center;
 				margin-bottom: 1vw;
-				font-weight: bold;
+				border-radius: 0.5vw;
 			}
 			.statusBarLoading {
 				background-color: rgb(200,255,0);
@@ -31,7 +39,7 @@
 			}
 			.statusBarDone {
 				background-color: rgb(0,101,189);
-				color: rgba(255,255,255,0.5);
+				color: rgba(255,255,255,0.75);
 			}
 		</style>
 		<title>PROJECT_NAME</title>
@@ -62,7 +70,9 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<span class="navbar-brand"><strong>blairgtd</strong>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;PROJECT_NAME</span>
+			<span class="navbar-brand">
+				<strong>blairgtd</strong>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;<span id="navbarSubtitle"></span>
+			</span>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -72,12 +82,9 @@
 					">New task</a></li>
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Change project <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li class="divider"></li>
-					<li><a href="#">Separated link</a></li>
+					<ul class="dropdown-menu" role="menu" id="projectSelector">
+						<li><a href="#">Create new project...</a></li>
+						<li class="divider"></li>
 					</ul>
 					</li>
 				</ul>
@@ -85,7 +92,7 @@
 			</div><!-- /.container-fluid -->
 		</nav>
 		<div id="bodyWrapper">
-			<div id="statusBar" class="statusBarLoading"><i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;loading ...</div>
+			<!-- <div id="statusBar" class="statusBarLoading"><i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;&nbsp;loading ...</div> -->
 			<div class="row">
 				<div class="col-md-3">
 					<div class="panel panel-danger">
@@ -132,9 +139,6 @@
 							</h3>
 						</div>
 						<ul class="list-group" id="outputFiles">
-							<a class="list-group-item"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Sample 1</a>
-							<a class="list-group-item"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Sample 2</a>
-							<a class="list-group-item"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Sample 3</a>
 						</ul>
 					</div>
 				</div>
